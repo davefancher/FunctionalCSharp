@@ -16,8 +16,8 @@ namespace FixingOO
                     Environment.NewLine,
                     new[] {
                         "Hartnell", "Troughton", "Pertwee", "T. Baker",
-                        "Davison", "McCoy", "McGann", "Eccleston",
-                        "Hurt", "Tennant", "Smith", "Capaldi" });
+                        "Davison", "C. Baker", "McCoy", "McGann",
+                        "Eccleston", "Hurt", "Tennant", "Smith", "Capaldi" });
 
             var buffer = Encoding.UTF8.GetBytes(doctors);
 
