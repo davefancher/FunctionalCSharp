@@ -1,31 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FixingOO
 {
     public static class StreamFactory
     {
+        private static string GetLines() =>
+            String.Join(
+                Environment.NewLine,
+                new[] {
+                    "Hartnell", "Troughton", "Pertwee", "T. Baker",
+                    "Davison", "McCoy", "McGann", "Eccleston",
+                    "Hurt", "Tennant", "Smith", "Capaldi" });
+
         public static Stream GetStream()
         {
-            var doctors =
-                String.Join(
-                    Environment.NewLine,
-                    new[] {
-                        "Hartnell", "Troughton", "Pertwee", "T. Baker",
-                        "Davison", "McCoy", "McGann", "Eccleston",
-                        "Hurt", "Tennant", "Smith", "Capaldi" });
-
-            var buffer = Encoding.UTF8.GetBytes(doctors);
-
-            var stream = new MemoryStream();
-            stream.Write(buffer, 0, buffer.Length);
-            stream.Position = 0L;
-
-            return stream;
+            return
+                new MemoryStream()
+                .Tee(stream =>
+                    GetLines()
+                        .Map(Encoding.UTF8.GetBytes)
+                        .Tee(buffer => stream.Write(buffer, 0, buffer.Length)))
+                .Tee(stream => stream.Position = 0L);
         }
     }
 }

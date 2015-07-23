@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
+
+using static FixingOO.Disposable;
 
 namespace FixingOO
 {
@@ -11,19 +11,18 @@ namespace FixingOO
         static void Main(string[] args)
         {
             // Transformation Pipeline
-            Disposable
-                .Using(
-                    StreamFactory.GetStream,
-                    stream => new byte[stream.Length].Tee(b => stream.Read(b, 0, (int)stream.Length)))
-                .Map(Encoding.UTF8.GetString)
-                .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
-                .Select((s, ix) => Tuple.Create(ix, s))
-                .ToDictionary(k => k.Item1, v => v.Item2)
-                .Map(HtmlBuilder.BuildSelectBox("theDoctors", true))
-                .Tee(Console.WriteLine);
+            Using(
+                StreamFactory.GetStream,
+                stream => new byte[stream.Length].Tee(b => stream.Read(b, 0, (int)stream.Length)))
+            .Map(Encoding.UTF8.GetString)
+            .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)
+            .Select((s, ix) => Tuple.Create(ix, s))
+            .ToDictionary(k => k.Item1, v => v.Item2)
+            .Map(HtmlBuilder.BuildSelectBox("theDoctors", true))
+            .Tee(Console.WriteLine);
 
             // String Validation Pipeline
-            "DoctorWho"
+            "Doctor Who"
                 .Map(Validator.IsNotNull)
                 .Bind(Validator.IsNotEmpty)
                 .Bind(Validator.MinLength(8))
