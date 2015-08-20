@@ -25,11 +25,10 @@ namespace FixingOO
                 html.AppendLine();
             }
 
-            html.AppendLine("</option>");
+            html.AppendLine("</select>");
 
             return html.ToString();
         }
-
 
         static void Main(string[] args)
         {
