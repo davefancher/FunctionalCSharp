@@ -11,18 +11,18 @@ namespace FixingOO
                 Environment.NewLine,
                 new[] {
                     "Hartnell", "Troughton", "Pertwee", "T. Baker",
-                    "Davison", "McCoy", "McGann", "Eccleston",
-                    "Hurt", "Tennant", "Smith", "Capaldi" });
+                    "Davison", "C. Baker", "McCoy", "McGann", "Hurt",
+                    "Eccleston", "Tennant", "Smith", "Capaldi" });
 
         public static Stream GetStream()
         {
             return
                 new MemoryStream()
-                .Tee(stream =>
-                    GetLines()
-                        .Map(Encoding.UTF8.GetBytes)
-                        .Tee(buffer => stream.Write(buffer, 0, buffer.Length)))
-                .Tee(stream => stream.Position = 0L);
+                    .Tee(stream =>
+                        GetLines()
+                            .Map(Encoding.UTF8.GetBytes)
+                            .Tee(buffer => stream.Write(buffer, 0, buffer.Length)))
+                    .Tee(stream => stream.Position = 0L);
         }
     }
 }
