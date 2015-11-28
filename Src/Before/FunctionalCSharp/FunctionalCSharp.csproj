@@ -7,8 +7,8 @@
     <ProjectGuid>{DC0FE2A9-3967-4247-B8C3-D597C497F928}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FixingOO</RootNamespace>
-    <AssemblyName>FixingOO</AssemblyName>
+    <RootNamespace>FunctionalCSharp</RootNamespace>
+    <AssemblyName>FunctionalCSharp</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

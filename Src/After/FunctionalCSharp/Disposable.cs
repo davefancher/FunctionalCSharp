@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FixingOO
+﻿namespace System
 {
     public static class Disposable
     {

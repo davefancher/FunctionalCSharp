@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FixingOO
+namespace FunctionalCSharp
 {
     public static class Validator
     {

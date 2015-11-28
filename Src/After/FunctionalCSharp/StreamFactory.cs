@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace FixingOO
+namespace FunctionalCSharp
 {
     public static class StreamFactory
     {

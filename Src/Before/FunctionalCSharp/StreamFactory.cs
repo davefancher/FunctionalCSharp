@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FixingOO
+namespace FunctionalCSharp
 {
     public static class StreamFactory
     {

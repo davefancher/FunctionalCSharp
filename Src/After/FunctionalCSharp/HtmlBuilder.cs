@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FixingOO
+namespace FunctionalCSharp
 {
     public static class HtmlBuilder
     {
